@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Op Basis van JSON</title>
+</head>
+<body>
+    <div id="menu-container"></div>
+
+    <script>
+        const menuData = [
+            {"title": "home", "url": "/"},
+            {"title": "producten", "url": "/producten/"},
+            {"title": "Over ons", "url": "/overons/"},
+            {"title": "contact", "url": "/contact/"}
+        ];
+
+        function generateMenu(data) {
+            const ul = document.createElement('ul'); // Maak een <ul> element aan
+
+            data.forEach(item => {
+                const li = document.createElement('li'); // Maak een <li> element aan
+                const a = document.createElement('a'); // Maak een <a> element aan
+                a.href = item.url; // Voeg de URL toe aan de <a> tag
+                a.textContent = item.title; // Voeg de titel toe als tekst
+
+                li.appendChild(a); // Voeg de <a> tag toe aan de <li>
+                ul.appendChild(li); // Voeg de <li> toe aan de <ul>
+            });
+
+            return ul; // Retourneer de <ul>
+        }
+
+        // Genereer het menu en voeg het toe aan de pagina
+        const menuContainer = document.getElementById('menu-container');
+        menuContainer.appendChild(generateMenu(menuData));
+    </script>
+</body>
+</html>
